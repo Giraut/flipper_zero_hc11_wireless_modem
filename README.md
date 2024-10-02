@@ -1,5 +1,5 @@
 # HC-11 wireless modem emulator for the Flipper Zero
-### Version 0.2
+### Version 1.1
 
 * [Usage](#Usage)
 * [Installation](#Installation)
