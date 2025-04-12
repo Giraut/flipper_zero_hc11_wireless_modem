@@ -397,7 +397,7 @@ void passthru_view_enter_callback(void *ctx) {
 
   App *app = (App *)ctx;
   PassthruModel *passthru_model = view_get_model(app->passthru_view);
-#if __has_include(<cli/cli.h>)
+#ifndef RECORD_CLI_VCP
   Cli *cli;
 #else
   CliVcp *cli_vcp;
@@ -409,7 +409,7 @@ void passthru_view_enter_callback(void *ctx) {
   passthru_model->usb_interface_state_save = furi_hal_usb_get_config();
 
   /* Disable the CLI */
-#if __has_include(<cli/cli.h>)
+#ifndef RECORD_CLI_VCP
   cli = furi_record_open(RECORD_CLI);
   cli_session_close(cli);
   furi_record_close(RECORD_CLI);
@@ -455,7 +455,7 @@ void passthru_view_enter_callback(void *ctx) {
       furi_hal_usb_reinit();
 
   /* Re-enable the CLI */
-#if __has_include(<cli/cli.h>)
+#ifndef RECORD_CLI_VCP
     cli = furi_record_open(RECORD_CLI);
     cli_session_open(cli, &cli_vcp);
     furi_record_close(RECORD_CLI);
@@ -541,7 +541,7 @@ void passthru_view_exit_callback(void *ctx) {
 
   App *app = (App *)ctx;
   PassthruModel *passthru_model = view_get_model(app->passthru_view);
-#if __has_include(<cli/cli.h>)
+#ifndef RECORD_CLI_VCP
   Cli *cli;
 #else
   CliVcp *cli_vcp;
@@ -575,7 +575,7 @@ void passthru_view_exit_callback(void *ctx) {
   furi_mutex_free(passthru_model->traffic_log_mutex);
 
   /* Disable the CLI */
-#if __has_include(<cli/cli.h>)
+#ifndef RECORD_CLI_VCP
   cli = furi_record_open(RECORD_CLI);
   cli_session_close(cli);
   furi_record_close(RECORD_CLI);
@@ -594,7 +594,7 @@ void passthru_view_exit_callback(void *ctx) {
 					NULL) == true);
 
   /* Re-enable the CLI */
-#if __has_include(<cli/cli.h>)
+#ifndef RECORD_CLI_VCP
   cli = furi_record_open(RECORD_CLI);
   cli_session_open(cli, &cli_vcp);
   furi_record_close(RECORD_CLI);
