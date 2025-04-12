@@ -1,6 +1,6 @@
 /***
  * HC-11 wireless modem emulator for the Flipper Zero
- * Version: 1.1
+ * Version: 1.2
  *
  * HC11 radio communication app
 ***/
@@ -335,7 +335,7 @@ static int32_t hc11_rx_tx_thread(void *ctx) {
   uint8_t l, i;
 
   loglevel = furi_hal_rtc_get_log_level();
-  spi = &furi_hal_spi_bus_handle_subghz;
+  spi = (FuriHalSpiBusHandle *)&furi_hal_spi_bus_handle_subghz;
 
   app->radio_started = false;
   never_sent_anything = true;

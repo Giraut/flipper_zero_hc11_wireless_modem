@@ -1,6 +1,6 @@
 /***
  * HC-11 wireless modem emulator for the Flipper Zero
- * Version: 1.1
+ * Version: 1.2
  *
  * USB serial passthrough view
 ***/
